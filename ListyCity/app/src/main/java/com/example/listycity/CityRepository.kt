@@ -36,8 +36,8 @@ class CityRepository {
     }
 
     fun updateCity(oldCity: City, updatedCity: City) {
-        citiesRef.document(oldCity.name).delete()
-        citiesRef.document(updatedCity.name).set(updatedCity) // replace old city with updated city in Firestore
+        citiesRef.document(oldCity.name).delete() // delete old city so new one can be added, so that firestore can handle the update properly
+        citiesRef.document(updatedCity.name).set(updatedCity) // add updated city, this file is now able to be deleted properly
     }
 
     fun removeCity(city: City) {
